@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Məhsullar | Kremşanti Fabriki</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Base Styles */
+    :root {
+      --primary-color: #b8860b;
+      --secondary-color: #f8f4e9;
+      --text-color: #333;
+      --light-gold: #d4af37;
+      --dark-gold: #8b6914;
+      --cream: #fffcf4;
+      --light-bg: #f8f6f0;
+      --dark-text: #2a2a2a;
+      --medium-text: #5a5a5a;
+      --whatsapp-green: #25D366;
+      --whatsapp-dark-green: #128C7E;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--text-color);
+      background-color: var(--cream);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header */
+    header {
+      background-color: rgba(255, 255, 255, 0.97);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      top: 0;
+      padding: 15px 0;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+    
+    header.scrolled {
+      padding: 10px 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+    
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      height: 60px;
+      transition: all 0.3s ease;
+      z-index: 1001;
+      position: relative;
+    }
+    
+    nav {
+      display: flex;
+      align-items: center;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    
+    nav ul li {
+      margin-left: 30px;
+      position: relative;
+    }
+    
+    nav ul li a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 14px;
+      position: relative;
+      padding: 5px 0;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+    }
+    
+    nav ul li a i {
+      margin-right: 8px;
+      font-size: 16px;
+    }
+    
+    nav ul li a:hover {
+      color: var(--primary-color);
+    }
+    
+    nav ul li a.active {
+      color: var(--primary-color);
+    }
+    
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--primary-color);
+      bottom: 0;
+      left: 0;
+      transition: width 0.3s ease;
+    }
+    
+    nav ul li a:hover::after, 
+    nav ul li a.active::after {
+      width: 100%;
+    }
+    
+    .lang-switch {
+      margin-left: 40px;
+      font-size: 14px;
+      display: flex;
+      gap: 5px;
+    }
+    
+    .lang-switch a {
+      text-decoration: none;
+      color: var(--text-color);
+      transition: color 0.3s ease;
+      font-weight: 500;
+      padding: 5px;
+      border-radius: 3px;
+    }
+    
+    .lang-switch a:hover, 
+    .lang-switch a.active {
+      color: var(--primary-color);
+      background: rgba(184, 134, 11, 0.1);
+    }
+    
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    
+    /* Hero Section */
+    .hero {
+      height: 60vh;
+      min-height: 500px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 90px;
+    }
+    
+    .hero-content {
+      text-align: center;
+      color: white;
+      max-width: 800px;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+      letter-spacing: 1px;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards 0.5s;
+    }
+    
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+      font-weight: 300;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards 0.8s;
+    }
+    
+    .hero-divider {
+      width: 150px;
+      height: 3px;
+      background-color: var(--primary-color);
+      margin: 0 auto 30px;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards 0.7s;
+    }
+    
+    /* Breadcrumbs */
+    .breadcrumbs {
+      padding: 20px 0;
+      background-color: var(--light-bg);
+      margin-bottom: 30px;
+    }
+    
+    .breadcrumbs ul {
+      display: flex;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    
+    .breadcrumbs li {
+      margin-right: 10px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .breadcrumbs li:after {
+      content: '/';
+      margin-left: 10px;
+      color: var(--medium-text);
+    }
+    
+    .breadcrumbs li:last-child:after {
+      display: none;
+    }
+    
+    .breadcrumbs a {
+      color: var(--medium-text);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .breadcrumbs a:hover {
+      color: var(--primary-color);
+    }
+    
+    .breadcrumbs span {
+      color: var(--primary-color);
+      font-weight: 500;
+    }
+    
+    /* Product Categories */
+    .product-categories {
+      padding: 50px 0 30px;
+      background-color: white;
+    }
+    
+    .categories-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 30px;
+    }
+    
+    .category-item {
+      padding: 12px 25px;
+      background-color: var(--light-bg);
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+    }
+    
+    .category-item i {
+      margin-right: 8px;
+    }
+    
+    .category-item:hover {
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+      transform: translateY(-3px);
+    }
+    
+    .category-item.active {
+      background-color: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+      box-shadow: 0 5px 15px rgba(184, 134, 11, 0.3);
+    }
+    
+    /* Products Section */
+    .product-section {
+      padding: 60px 0 100px;
+      position: relative;
+      background-color: var(--cream);
+    }
+    
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      text-align: center;
+      color: var(--dark-text);
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 3px;
+      background-color: var(--primary-color);
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .section-subtitle {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 60px;
+      color: var(--medium-text);
+      font-size: 1.1rem;
+    }
+    
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
+    }
+    
+    .product-card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      transform: translateY(50px);
+      opacity: 0;
+      position: relative;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+    
+    .product-card.revealed {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
+    
+    .product-image-container {
+      height: 280px;
+      position: relative;
+      overflow: hidden;
+      perspective: 1000px;
+    }
+    
+    .product-image-wrapper {
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .product-card:hover .product-image-wrapper {
+      transform: rotateY(180deg);
+    }
+    
+    .product-front,
+    .product-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+    }
+    
+    .product-back {
+      transform: rotateY(180deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--light-gold), var(--primary-color));
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .product-back-content {
+      max-width: 90%;
+    }
+    
+    .product-back h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+    }
+    
+    .product-characteristics {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+    
+    .product-characteristics li {
+      margin-bottom: 8px;
+      list-style: none;
+      position: relative;
+      padding-left: 20px;
+      font-size: 14px;
+    }
+    
+    .product-characteristics li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: white;
+      font-weight: bold;
+    }
+    
+    .product-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.5s ease;
+    }
+    
+    .product-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 8px 15px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      z-index: 1;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .new-badge {
+      background-color: #2ecc71;
+    }
+    
+    .bestseller-badge {
+      background-color: #e74c3c;
+    }
+    
+    .professional-badge {
+      background-color: #3498db;
+    }
+    
+    .product-details {
+      padding: 25px;
+    }
+    
+    .product-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: var(--dark-text);
+      transition: color 0.3s ease;
+    }
+    
+    .product-card:hover .product-name {
+      color: var(--primary-color);
+    }
+    
+    .product-description {
+      color: var(--medium-text);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+    
+    .product-price {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      display: block;
+    }
+    
+    .product-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .product-link {
+      display: inline-block;
+      color: var(--primary-color);
+      font-weight: 600;
+      text-decoration: none;
+      padding-bottom: 3px;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s ease;
+      font-size: 14px;
+    }
+    
+    .product-link:hover {
+      border-bottom-color: var(--primary-color);
+      padding-left: 5px;
+    }
+    
+    .order-btn {
+      background: linear-gradient(to right, var(--whatsapp-green), var(--whatsapp-dark-green));
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 10px 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3);
+    }
+    
+    .order-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(37, 211, 102, 0.4);
+    }
+    
+    .whatsapp-icon {
+      width: 18px;
+      height: 18px;
+    }
+    
+    /* Quick View Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .modal.show {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+    }
+    
+    .modal-content {
+      background-color: white;
+      margin: auto;
+      padding: 30px;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 900px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+      transform: translateY(-50px);
+      transition: transform 0.3s ease;
+    }
+    
+    .modal.show .modal-content {
+      transform: translateY(0);
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      color: var(--medium-text);
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    
+    .close-modal:hover {
+      color: var(--primary-color);
+    }
+    
+    .modal-product {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+    
+    .modal-product-image {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .modal-product-image img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .modal-product-details {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .modal-product-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: var(--dark-text);
+    }
+    
+    .modal-product-price {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    
+    .modal-product-description {
+      margin-bottom: 25px;
+      line-height: 1.8;
+    }
+    
+    .modal-product-features h4 {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+    }
+    
+    .modal-product-features ul {
+      margin-bottom: 25px;
+    }
+    
+    .modal-product-features li {
+      margin-bottom: 10px;
+      position: relative;
+      padding-left: 25px;
+    }
+    
+    .modal-product-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--primary-color);
+      font-weight: bold;
+    }
+    
+    .modal-actions {
+      display: flex;
+      gap: 15px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+    
+    .modal-order-btn {
+      background: linear-gradient(to right, var(--whatsapp-green), var(--whatsapp-dark-green));
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 12px 25px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3);
+      text-decoration: none;
+    }
+    
+    .modal-order-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(37, 211, 102, 0.4);
+    }
+    
+    .modal-close-btn {
+      background: white;
+      color: var(--primary-color);
+      border: 2px solid var(--primary-color);
+      border-radius: 50px;
+      padding: 12px 25px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .modal-close-btn:hover {
+      background: var(--primary-color);
+      color: white;
+    }
+    
+    /* Call to Action */
+    .cta {
+      padding: 100px 0;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      background-attachment: fixed;
+      text-align: center;
+      color: white;
+    }
+    
+    .cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+    }
+    
+    .cta p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+      transition-delay: 0.2s;
+    }
+    
+    .cta .btn {
+      display: inline-block;
+      background: linear-gradient(to right, var(--primary-color), var(--light-gold));
+      color: white;
+      text-decoration: none;
+      padding: 15px 40px;
+      border-radius: 50px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+      transition-delay: 0.4s;
+    }
+    
+    .cta .btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    .cta.revealed h2,
+    .cta.revealed p,
+    .cta.revealed .btn {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 60px 0 30px;
+      position: relative;
+    }
+    
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-logo {
+      flex: 1;
+      min-width: 250px;
+    }
+    
+    .footer-logo img {
+      height: 50px;
+      margin-bottom: 20px;
+    }
+    
+    .footer-logo p {
+      font-size: 14px;
+      max-width: 300px;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 12px;
+    }
+    
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: white;
+    }
+    
+    .social-links a:hover {
+      background: var(--primary-color);
+      transform: translateY(-3px);
+    }
+    
+    .footer-links {
+      flex: 1;
+      min-width: 160px;
+    }
+    
+    .footer-links h4 {
+      font-family: 'Playfair Display', serif;
+      color: white;
+      margin-bottom: 25px;
+      font-size: 18px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-links h4::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 2px;
+      background-color: var(--primary-color);
+    }
+    
+    .footer-links ul {
+      list-style: none;
+    }
+    
+    .footer-links ul li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-links ul li a {
+      color: #ddd;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 14px;
+      position: relative;
+      padding-left: 15px;
+    }
+    
+    .footer-links ul li a::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      top: 0;
+      transition: all 0.3s ease;
+      opacity: 0;
+    }
+    
+    .footer-links ul li a:hover {
+      color: var(--primary-color);
+      padding-left: 20px;
+    }
+    
+    .footer-links ul li a:hover::before {
+      opacity: 1;
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 14px;
+    }
+    
+    .back-to-top {
+      position: absolute;
+      right: 30px;
+      bottom: 30px;
+      width: 40px;
+      height: 40px;
+      background-color: var(--primary-color);
+      color: white;
+      text-align: center;
+      line-height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+    
+    .back-to-top:hover {
+      background-color: var(--dark-gold);
+      transform: translateY(-5px);
+    }
+    
+    /* WhatsApp Floating Button */
+    .whatsapp-float {
+      position: fixed;
+      right: 30px;
+      bottom: 30px;
+      background-color: var(--whatsapp-green);
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 24px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .whatsapp-float:hover {
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      background-color: var(--whatsapp-dark-green);
+    }
+    
+    .whatsapp-icon-large {
+      width: 30px;
+      height: 30px;
+    }
+    
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-20px) rotate(5deg);
+      }
+    }
+    
+    @keyframes rotate {
+      from {
+        transform: rotateY(0deg);
+      }
+      to {
+        transform: rotateY(360deg);
+      }
+    }
+    
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .modal-product {
+        flex-direction: column;
+      }
+      
+      .modal-product-image,
+      .modal-product-details {
+        min-width: 100%;
+      }
+    }
+    
+    @media (max-width: 992px) {
+      .hero-content h1 {
+        font-size: 3rem;
+      }
+      
+      .hero-content p {
+        font-size: 1.1rem;
+      }
+      
+      .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      }
+      
+      nav ul li {
+        margin-left: 20px;
+      }
+      
+      .lang-switch {
+        margin-left: 20px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+        font-size: 24px;
+      }
+      
+      nav ul {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: white;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: right 0.3s ease;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+      
+      nav ul.active {
+        right: 0;
+      }
+      
+      nav ul li {
+        margin: 15px 0;
+      }
+      
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-content p {
+        font-size: 1rem;
+      }
+      
+      .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+      
+      .modal-content {
+        width: 90%;
+        padding: 20px;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        gap: 30px;
+      }
+      
+      .footer-logo,
+      .footer-links {
+        min-width: 100%;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .cta h2 {
+        font-size: 2.2rem;
+      }
+      
+      .cta .btn {
+        padding: 12px 30px;
+      }
+      
+      .modal-actions {
+        flex-direction: column;
+      }
+      
+      .modal-order-btn,
+      .modal-close-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div class="container">
+      <img src="image/logo.png" alt="Kremşanti Logo" class="logo">
+      <div class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+      <nav>
+        <ul id="nav-menu">
+          <li><a href="index.html"><i class="fas fa-home"></i> Ana Səhifə</a></li>
+          <li><a href="about.html"><i class="fas fa-info-circle"></i> Haqqımızda</a></li>
+          <li><a href="products.html" class="active"><i class="fas fa-box-open"></i> Məhsullar</a></li>
+          <li><a href="contact.html"><i class="fas fa-envelope"></i> Əlaqə</a></li>
+          <div class="lang-switch">
+            <a href="#" class="active">AZ</a>
+            <a href="#">RU</a>
+            <a href="#">EN</a>
+          </div>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Premium Məhsullar</h1>
+      <div class="hero-divider"></div>
+      <p>Ən yüksək keyfiyyətli və təbii inqrediyentlərdən hazırlanan kremşanti məhsulları</p>
+    </div>
+  </section>
+  
+  <div class="breadcrumbs">
+    <div class="container">
+      <ul>
+        <li><a href="index.html">Ana Səhifə</a></li>
+        <li><span>Məhsullar</span></li>
+      </ul>
+    </div>
+  </div>
+  
+  <section class="product-categories">
+    <div class="container">
+      <div class="categories-container">
+        <div class="category-item active"><i class="fas fa-boxes"></i> Hamısı</div>
+        <div class="category-item"><i class="fas fa-whipping-cream"></i> Kremşanti</div>
+        <div class="category-item"><i class="fas fa-birthday-cake"></i> Tort Kremləri</div>
+        <div class="category-item"><i class="fas fa-candy-cane"></i> Çikolata</div>
+        <div class="category-item"><i class="fas fa-star"></i> Xüsusi Məhsullar</div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="product-section">
+    <div class="container">
+      <h2 class="section-title">Məhsul Kataloqu</h2>
+      <p class="section-subtitle">Keyfiyyətli və təbii inqrediyentlərdən hazırlanmış məhsullarımızı kəşf edin. Hər biri peşəkarlar tərəfindən xüsusi reseptlər əsasında hazırlanır.</p>
+      
+      <div class="product-grid">
+        <!-- Product 1 -->
+        <div class="product-card" data-product="1">
+          <div class="product-image-container">
+            <div class="product-image-wrapper">
+              <div class="product-front">
+                <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Klassik Kremşanti" class="product-img">
+              </div>
+              <div class="product-back">
+                <div class="product-back-content">
+                  <h4>Məhsul haqqında</h4>
+                  <ul class="product-characteristics">
+                    <li>Təbii inqrediyentlər</li>
+                    <li>Uzun saxlama müddəti</li>
+                    <li>Yüksək keyfiyyət</li>
+                    <li>100% təbii süd</li>
+                    <li>Qatkısız</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="product-badge bestseller-badge">Ən Çox Satılan</div>
+          </div>
+          <div class="product-details">
+            <h3 class="product-name">Klassik Kremşanti</h3>
+            <p class="product-description">Təbii inqrediyentlərdən hazırlanan klassik kremşanti - bütün tortlar və şirniyyatlar üçün ideal seçim.</p>
+            <span class="product-price">12.90 ₼</span>
+            <div class="product-actions">
+              <a href="#" class="product-link quick-view-btn" data-product="1">Ətraflı →</a>
+              <a href="https://wa.me/994501234567?text=M%C9%99n%20Klassik%20Krem%C5%9Fanti%20m%C9%99hsulunu%20sifari%C5%9F%20etm%C9%99k%20ist%C9%99yir%C9%99m.%20Qiym%C9%99ti:%2012.90%20%E2%82%BC" class="order-btn">
+                <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                  <path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+                </svg>
+                Sifariş et
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Product 2 -->
+        <div class="product-card" data-product="2">
+          <div class="product-image-container">
+            <div class="product-image-wrapper">
+              <div class="product-front">
+                <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Şokoladlı Kremşanti" class="product-img">
+              </div>
+              <div class="product-back">
+                <div class="product-back-content">
+                  <h4>Məhsul haqqında</h4>
+                  <ul class="product-characteristics">
+                    <li>Əla keyfiyyətli kakao</li>
+                    <li>Zəngin şokolad dadı</li>
+                    <li>Dadlı və yumşaq tekstura</li>
+                    <li>Şirniyyatlar üçün ideal</li>
+                    <li>Peşəkar istifadə</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="product-details">
+            <h3 class="product-name">Şokoladlı Kremşanti</h3>
+            <p class="product-description">Əla keyfiyyətli kakao ilə zənginləşdirilmiş şokoladlı kremşanti - xüsusi şirniyyatlar üçün.</p>
+            <span class="product-price">14.50 ₼</span>
+            <div class="product-actions">
+              <a href="#" class="product-link quick-view-btn" data-product="2">Ətraflı →</a>
+              <a href="https://wa.me/994501234567?text=M%C9%99n%20%C5%9Eokoladl%C4%B1%20Krem%C5%9Fanti%20m%C9%99hsulunu%20sifari%C5%9F%20etm%C9%99k%20ist%C9%99yir%C9%99m.%20Qiym%C9%99ti:%2014.50%20%E2%82%BC" class="order-btn">
+                <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                  <path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+                </svg>
+                Sifariş et
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Product 3 -->
+        <div class="product-card" data-product="3">
+          <div class="product-image-container">
+            <div class="product-image-wrapper">
+              <div class="product-front">
+                <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Vanilli Kremşanti" class="product-img">
+              </div>
+              <div class="product-back">
+                <div class="product-back-content">
+                  <h4>Məhsul haqqında</h4>
+                  <ul class="product-characteristics">
+                    <li>Təbii vanil ekstraktı</li>
+                    <li>Zərif ətirli dad</li>
+                    <li>Yüngül tekstura</li>
+                    <li>İncə desert üçün ideal</li>
+                    <li>Yeni resept</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="product-badge new-badge">Yeni</div>
+          </div>
+          <div class="product-details">
+            <h3 class="product-name">Vanilli Kremşanti</h3>
+            <p class="product-description">Ətirli və aromatik vanil dadı ilə hazırlanmış xüsusi kremşanti - müxtəlif desertlər üçün.</p>
+            <span class="product-price">13.90 ₼</span>
+            <div class="product-actions">
+              <a href="#" class="product-link quick-view-btn" data-product="3">Ətraflı →</a>
+              <a href="https://wa.me/994501234567?text=M%C9%99n%20Vanilli%20Krem%C5%9Fanti%20m%C9%99hsulunu%20sifari%C5%9F%20etm%C9%99k%20ist%C9%99yir%C9%99m.%20Qiym%C9%99ti:%2013.90%20%E2%82%BC" class="order-btn">
+                <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                  <path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+                </svg>
+                Sifariş et
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Product 4 -->
+        <div class="product-card" data-product="4">
+          <div class="product-image-container">
+            <div class="product-image-wrapper">
+              <div class="product-front">
+                <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Limonlu Kremşanti" class="product-img">
+              </div>
+              <div class="product-back">
+                <div class="product-back-content">
+                  <h4>Məhsul haqqında</h4>
+                  <ul class="product-characteristics">
+                    <li>Təbii limon ekstraktı</li>
+                    <li>Yüngül turşu dadı</li>
+                    <li>Yay desertləri üçün ideal</li>
+                    <li>Təravətli dad</li>
+                    <li>Yeni resept</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="product-details">
+            <h3 class="product-name">Limonlu Kremşanti</h3>
+            <p class="product-description">Təravətli limon dadı ilə hazırlanmış yüngül kremşanti - yay desertləri üçün mükəmməl seçim.</p>
+            <span class="product-price">13.90 ₼</span>
+            <div class="product-actions">
+              <a href="#" class="product-link quick-view-btn" data-product="4">Ətraflı →</a>
+              <a href="https://wa.me/994501234567?text=M%C9%99n%20Limonlu%20Krem%C5%9Fanti%20m%C9%99hsulunu%20sifari%C5%9F%20etm%C9%99k%20ist%C9%99yir%C9%99m.%20Qiym%C9%99ti:%2013.90%20%E2%82%BC" class="order-btn">
+                <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                  <path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+                </svg>
+                Sifariş et
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Product 5 -->
+        <div class="product-card" data-product="5">
+          <div class="product-image-container">
+            <div class="product-image-wrapper">
+              <div class="product-front">
+                <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Karamelli Kremşanti" class="product-img">
+              </div>
+              <div class="product-back">
+                <div class="product-back-content">
+                  <h4>Məhsul haqqında</h4>
+                  <ul class="product-characteristics">
+                    <li>Zəngin karamel dadı</li>
+                    <li>Şirin və dolğun tekstura</li>
+                    <li>Xüsusi tortlar üçün</li>
+                    <li>Uzun müddət saxlama</li>
+                    <li>Peşəkar istifadə</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="product-details">
+            <h3 class="product-name">Karamelli Kremşanti</h3>
+            <p class="product-description">Zəngin karamel dadı ilə hazırlanmış xüsusi kremşanti - şirniyyatlarınıza yeni dad qatacaq.</p>
+            <span class="product-price">15.90 ₼</span>
+            <div class="product-actions">
+              <a href="#" class="product-link quick-view-btn" data-product="5">Ətraflı →</a>
+              <a href="https://wa.me/994501234567?text=M%C9%99n%20Karamelli%20Krem%C5%9Fanti%20m%C9%99hsulunu%20sifari%C5%9F%20etm%C9%99k%20ist%C9%99yir%C9%99m.%20Qiym%C9%99ti:%2015.90%20%E2%82%BC" class="order-btn">
+                <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                  <path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+                </svg>
+                Sifariş et
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Product 6 -->
+        <div class="product-card" data-product="6">
+          <div class="product-image-container">
+            <div class="product-image-wrapper">
+              <div class="product-front">
+                <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Peşəkar Tort Kremi" class="product-img">
+              </div>
+              <div class="product-back">
+                <div class="product-back-content">
+                  <h4>Məhsul haqqında</h4>
+                  <ul class="product-characteristics">
+                    <li>Peşəkar istifadə üçün</li>
+                    <li>Sabit strukturlu krem</li>
+                    <li>Yüksək temperaturda davamlı</li>
+                    <li>Tort bəzəmələri üçün ideal</li>
+                    <li>Uzun müddət saxlama</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="product-badge professional-badge">Peşəkar</div>
+          </div>
+          <div class="product-details">
+            <h3 class="product-name">Peşəkar Tort Kremi</h3>
+            <p class="product-description">Peşəkar istifadə üçün nəzərdə tutulmuş xüsusi tort kremi - mükəmməl strukturlu tortlar üçün.</p>
+            <span class="product-price">18.90 ₼</span>
+            <div class="product-actions">
+              <a href="#" class="product-link quick-view-btn" data-product="6">Ətraflı →</a>
+              <a href="https://wa.me/994501234567?text=M%C9%99n%20Pe%C5%9F%C9%99kar%20Tort%20Kremi%20m%C9%99hsulunu%20sifari%C5%9F%20etm%C9%99k%20ist%C9%99yir%C9%99m.%20Qiym%C9%99ti:%2018.90%20%E2%82%BC" class="order-btn">
+                <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                  <path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+                </svg>
+                Sifariş et
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick View Modal -->
+  <div class="modal" id="quickViewModal">
+    <div class="modal-content">
+      <span class="close-modal" id="closeModal">&times;</span>
+      <div class="modal-product" id="modalProductContent">
+        <!-- Content will be inserted here via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <section class="cta">
+    <div class="container">
+      <h2>Topdan Sifarişlər Üçün</h2>
+      <p>Restoran, kafe və ya şirniyyat sexləri üçün topdan sifarişlər və xüsusi təkliflər üçün bizə müraciət edin.</p>
+      <a href="contact.html" class="btn">Əlaqə Saxlayın</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="image/logo.png" alt="Kremşanti Logo">
+          <p>Premium keyfiyyətli kremşanti məhsulları istehsalçısı. 2010-cu ildən xidmətinizdəyik.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Əsas Bölmələr</h4>
+          <ul>
+            <li><a href="index.html">Ana Səhifə</a></li>
+            <li><a href="about.html">Haqqımızda</a></li>
+            <li><a href="products.html">Məhsullar</a></li>
+            <li><a href="contact.html">Əlaqə</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Məhsullar</h4>
+          <ul>
+            <li><a href="#">Kremşanti</a></li>
+            <li><a href="#">Tort Kremləri</a></li>
+            <li><a href="#">Çikolata</a></li>
+            <li><a href="#">Xüsusi Məhsullar</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Əlaqə</h4>
+          <ul>
+            <li><a href="#"><i class="fas fa-map-marker-alt"></i> Ünvan: Bakı, Azərbaycan</a></li>
+            <li><a href="tel:+994501234567"><i class="fas fa-phone"></i> Telefon: +994 50 123 45 67</a></li>
+            <li><a href="mailto:info@kremshanti.az"><i class="fas fa-envelope"></i> Email: info@kremshanti.az</a></li>
+            <li><a href="#"><i class="fas fa-clock"></i> İş saatları: 09:00 - 18:00</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <p>&copy; 2023 Kremşanti Fabriki. Bütün hüquqlar qorunur.</p>
+      </div>
+      
+      <a href="#" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+      </a>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/994501234567" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+    <svg class="whatsapp-icon-large" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+      <path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+    </svg>
+  </a>
+
+  <script>
+    // Mobile Navigation Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      hamburger.innerHTML = navMenu.classList.contains('active') 
+        ? '<i class="fas fa-times"></i>' 
+        : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Header Scroll Effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+    
+    // Product Card Animation on Scroll
+    const productCards = document.querySelectorAll('.product-card');
+    
+    const animateOnScroll = () => {
+      productCards.forEach(card => {
+        const cardPosition = card.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+        
+        if (cardPosition < screenPosition) {
+          card.classList.add('revealed');
+        }
+      });
+    };
+    
+    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('load', animateOnScroll);
+    
+    // CTA Animation
+    const ctaSection = document.querySelector('.cta');
+    const ctaObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          ctaSection.classList.add('revealed');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    ctaObserver.observe(ctaSection);
+    
+    // Quick View Modal
+    const quickViewBtns = document.querySelectorAll('.quick-view-btn');
+    const quickViewModal = document.getElementById('quickViewModal');
+    const closeModal = document.getElementById('closeModal');
+    const modalProductContent = document.getElementById('modalProductContent');
+    
+    // Product data for modal
+    const products = {
+      1: {
+        name: "Klassik Kremşanti",
+        price: "12.90 ₼",
+        image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        description: "Təbii inqrediyentlərdən hazırlanan klassik kremşanti - bütün tortlar və şirniyyatlar üçün ideal seçim. Xüsusi reseptimiz əsasında hazırlanan bu məhsul uzun müddət strukturunu qoruyur və istifadəçilər tərəfindən yüksək qiymətləndirilir.",
+        features: [
+          "Təbii inqrediyentlər",
+          "Uzun saxlama müddəti",
+          "Yüksək keyfiyyət",
+          "100% təbii süd",
+          "Qatkısız",
+          "Peşəkar istifadə üçün uyğun",
+          "Asan hazırlanma"
+        ]
+      },
+      2: {
+        name: "Şokoladlı Kremşanti",
+        price: "14.50 ₼",
+        image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        description: "Əla keyfiyyətli kakao ilə zənginləşdirilmiş şokoladlı kremşanti - xüsusi şirniyyatlar üçün. Bu məhsul şokolad sevənlər üçün ideal seçimdir və müxtəlif desertlərdə istifadə oluna bilər.",
+        features: [
+          "Əla keyfiyyətli kakao",
+          "Zəngin şokolad dadı",
+          "Dadlı və yumşaq tekstura",
+          "Şirniyyatlar üçün ideal",
+          "Peşəkar istifadə",
+          "Uzun müddət saxlana bilər",
+          "Asan qarışdırılır"
+        ]
+      },
+      // Add other products similarly...
+    };
+    
+    quickViewBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const productId = btn.getAttribute('data-product');
+        const product = products[productId];
+        
+        modalProductContent.innerHTML = `
+          <div class="modal-product-image">
+            <img src="${product.image}" alt="${product.name}">
+          </div>
+          <div class="modal-product-details">
+            <h3 class="modal-product-name">${product.name}</h3>
+            <div class="modal-product-price">${product.price}</div>
+            <p class="modal-product-description">${product.description}</p>
+            <div class="modal-product-features">
+              <h4>Xüsusiyyətlər</h4>
+              <ul>
+                ${product.features.map(feature => `<li>${feature}</li>`).join('')}
+              </ul>
+            </div>
+            <div class="modal-actions">
+              <a href="https://wa.me/994501234567?text=M%C9%99n%20${encodeURIComponent(product.name)}%20m%C9%99hsulunu%20sifari%C5%9F%20etm%C9%99k%20ist%C9%99yir%C9%99m.%20Qiym%C9%99ti:%20${encodeURIComponent(product.price)}" class="modal-order-btn">
+                <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                  <path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+                </svg>
+                Sifariş et
+              </a>
+              <button class="modal-close-btn">Bağla</button>
+            </div>
+          </div>
+        `;
+        
+        quickViewModal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+        
+        // Add event listener to the new close button
+        document.querySelector('.modal-close-btn').addEventListener('click', () => {
+          quickViewModal.classList.remove('show');
+          document.body.style.overflow = '';
+        });
+      });
+    });
+    
+    closeModal.addEventListener('click', () => {
+      quickViewModal.classList.remove('show');
+      document.body.style.overflow = '';
+    });
+    
+    window.addEventListener('click', (e) => {
+      if (e.target === quickViewModal) {
+        quickViewModal.classList.remove('show');
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+</body>
+</html>

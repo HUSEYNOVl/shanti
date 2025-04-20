@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ana Səhifə | Kremşanti Fabriki</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Base Styles */
+    :root {
+      --primary-color: #b8860b;
+      --secondary-color: #f8f4e9;
+      --text-color: #333;
+      --light-gold: #d4af37;
+      --dark-gold: #8b6914;
+      --cream: #fffcf4;
+      --light-bg: #f8f6f0;
+      --dark-text: #2a2a2a;
+      --medium-text: #5a5a5a;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--text-color);
+      background-color: var(--cream);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header */
+    header {
+      background-color: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      top: 0;
+      padding: 15px 0;
+      transition: all 0.3s ease;
+    }
+    
+    header.transparent {
+      background-color: rgba(255, 255, 255, 0);
+      box-shadow: none;
+    }
+    
+    header.scrolled {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 10px 0;
+    }
+    
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      height: 60px;
+      transition: all 0.3s ease;
+      z-index: 1001;
+      position: relative;
+    }
+    
+    nav {
+      display: flex;
+      align-items: center;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    
+    nav ul li {
+      margin-left: 30px;
+    }
+    
+    nav ul li a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 14px;
+      position: relative;
+      padding: 5px 0;
+      transition: all 0.3s ease;
+    }
+    
+    nav ul li a:hover {
+      color: var(--primary-color);
+    }
+    
+    nav ul li a.active {
+      color: var(--primary-color);
+    }
+    
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--primary-color);
+      bottom: 0;
+      left: 0;
+      transition: width 0.3s ease;
+    }
+    
+    nav ul li a:hover::after, 
+    nav ul li a.active::after {
+      width: 100%;
+    }
+    
+    .lang-switch {
+      margin-left: 40px;
+      font-size: 14px;
+    }
+    
+    .lang-switch a {
+      text-decoration: none;
+      color: var(--text-color);
+      transition: color 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .lang-switch a:hover {
+      color: var(--primary-color);
+    }
+    
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/api/placeholder/1920/1080') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .hero-content {
+      text-align: center;
+      color: white;
+      max-width: 800px;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+      letter-spacing: 1px;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards 0.5s;
+    }
+    
+    .hero-content p {
+      font-size: 1.4rem;
+      margin-bottom: 40px;
+      font-weight: 300;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards 0.8s;
+    }
+    
+    .hero-divider {
+      width: 150px;
+      height: 3px;
+      background-color: var(--primary-color);
+      margin: 0 auto 30px;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards 0.7s;
+    }
+    
+    .btn {
+      display: inline-block;
+      background: linear-gradient(to right, var(--primary-color), var(--light-gold));
+      color: white;
+      text-decoration: none;
+      padding: 15px 40px;
+      border-radius: 50px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards 1s;
+    }
+    
+    .btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* 3D Objects */
+    .scene {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    
+    .floating-cream {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      animation: float 8s ease-in-out infinite;
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+    }
+    
+    .floating-cream.cream-1 {
+      top: 15%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+    
+    .floating-cream.cream-2 {
+      top: 60%;
+      right: 15%;
+      animation-delay: 1s;
+    }
+    
+    .floating-cream.cream-3 {
+      bottom: 20%;
+      left: 20%;
+      animation-delay: 2s;
+    }
+    
+    .cream-circle {
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,252,244,0.8) 50%, rgba(255,252,244,0) 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: spin 15s linear infinite;
+    }
+    
+    /* Featured Products Section */
+    .featured-products {
+      padding: 100px 0;
+      background-color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      text-align: center;
+      color: var(--dark-text);
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 3px;
+      background-color: var(--primary-color);
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .section-subtitle {
+      text-align: center;
+      max-width: 700px;
+      margin: 30px auto 60px;
+      color: var(--medium-text);
+      font-size: 1.1rem;
+    }
+    
+    /* 3D Animation */
+    .product-3d-container {
+      height: 400px;
+      position: relative;
+      perspective: 1000px;
+      margin: 50px auto;
+      max-width: 400px;
+    }
+    
+    .product-3d {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: rotate 20s infinite linear;
+    }
+    
+    @keyframes rotate {
+      from { transform: rotateY(0deg) rotateX(10deg); }
+      to { transform: rotateY(360deg) rotateX(10deg); }
+    }
+    
+    .product-face {
+      position: absolute;
+      width: 200px;
+      height: 300px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border: 2px solid var(--primary-color);
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(184, 134, 11, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      backface-visibility: hidden;
+      transition: all 0.3s ease;
+      left: 50%;
+      top: 50%;
+      margin-left: -100px;
+      margin-top: -150px;
+    }
+    
+    .product-face img {
+      width: 80%;
+      height: auto;
+      object-fit: contain;
+    }
+    
+    .product-face:nth-child(1) { transform: rotateY(0deg) translateZ(150px); }
+    .product-face:nth-child(2) { transform: rotateY(60deg) translateZ(150px); }
+    .product-face:nth-child(3) { transform: rotateY(120deg) translateZ(150px); }
+    .product-face:nth-child(4) { transform: rotateY(180deg) translateZ(150px); }
+    .product-face:nth-child(5) { transform: rotateY(240deg) translateZ(150px); }
+    .product-face:nth-child(6) { transform: rotateY(300deg) translateZ(150px); }
+    
+    .product-cta {
+      text-align: center;
+      margin-top: 40px;
+    }
+    
+    /* Products Grid */
+    .products-wrapper {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 60px;
+    }
+    
+    .product-card {
+      flex: 1;
+      min-width: 280px;
+      max-width: 350px;
+      background-color: var(--light-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.06);
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    
+    .product-card.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .product-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .product-image-container {
+      height: 250px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .product-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.5s ease;
+    }
+    
+    .product-card:hover .product-img {
+      transform: scale(1.05);
+    }
+    
+    .product-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 8px 15px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .product-details {
+      padding: 25px;
+    }
+    
+    .product-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: var(--dark-text);
+      transition: color 0.3s ease;
+    }
+    
+    .product-card:hover .product-name {
+      color: var(--primary-color);
+    }
+    
+    .product-description {
+      color: var(--medium-text);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+    
+    .product-link {
+      display: inline-block;
+      color: var(--primary-color);
+      font-weight: 600;
+      text-decoration: none;
+      padding-bottom: 3px;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+    
+    .product-link:hover {
+      border-bottom-color: var(--primary-color);
+      padding-left: 5px;
+    }
+    
+    /* Call to Action */
+    .cta {
+      padding: 100px 0;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1920/800') center/cover no-repeat;
+      background-attachment: fixed;
+      text-align: center;
+      color: white;
+    }
+    
+    .cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+    }
+    
+    .cta.revealed h2 {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .cta p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+      transition-delay: 0.2s;
+    }
+    
+    .cta.revealed p {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .cta .btn {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+      transition-delay: 0.4s;
+    }
+    
+    .cta.revealed .btn {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 60px 0 30px;
+      position: relative;
+    }
+    
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-logo {
+      flex: 1;
+      min-width: 250px;
+    }
+    
+    .footer-logo img {
+      height: 50px;
+      margin-bottom: 20px;
+    }
+    
+    .footer-logo p {
+      font-size: 14px;
+      max-width: 300px;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 12px;
+    }
+    
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: white;
+    }
+    
+    .social-links a:hover {
+      background: var(--primary-color);
+      transform: translateY(-3px);
+    }
+    
+    .footer-links {
+      flex: 1;
+      min-width: 160px;
+    }
+    
+    .footer-links h4 {
+      font-family: 'Playfair Display', serif;
+      color: white;
+      margin-bottom: 25px;
+      font-size: 18px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-links h4::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 2px;
+      background-color: var(--primary-color);
+    }
+    
+    .footer-links ul {
+      list-style: none;
+    }
+    
+    .footer-links ul li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-links ul li a {
+      color: #ddd;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 14px;
+      position: relative;
+      padding-left: 15px;
+    }
+    
+    .footer-links ul li a::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      top: 0;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-links ul li a:hover {
+      color: var(--primary-color);
+      padding-left: 20px;
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 14px;
+    }
+    
+    .back-to-top {
+      position: absolute;
+      right: 30px;
+      bottom: 30px;
+      width: 40px;
+      height: 40px;
+      background-color: var(--primary-color);
+      color: white;
+      text-align: center;
+      line-height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .back-to-top:hover {
+      background-color: var(--dark-gold);
+      transform: translateY(-5px);
+    }
+    
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-20px) rotate(5deg);
+      }
+    }
+    
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero-content h1 {
+        font-size: 3.5rem;
+      }
+      
+      .hero-content p {
+        font-size: 1.2rem;
+      }
+      
+      .product-3d-container {
+        height: 350px;
+      }
+      
+      .product-face {
+        width: 180px;
+        height: 270px;
+        margin-left: -90px;
+        margin-top: -135px;
+      }
+      
+      .product-face:nth-child(1) { transform: rotateY(0deg) translateZ(120px); }
+      .product-face:nth-child(2) { transform: rotateY(60deg) translateZ(120px); }
+      .product-face:nth-child(3) { transform: rotateY(120deg) translateZ(120px); }
+      .product-face:nth-child(4) { transform: rotateY(180deg) translateZ(120px); }
+      .product-face:nth-child(5) { transform: rotateY(240deg) translateZ(120px); }
+      .product-face:nth-child(6) { transform: rotateY(300deg) translateZ(120px); }
+    }
+    
+    @media (max-width: 768px) {
+      nav ul li {
+        margin-left: 15px;
+      }
+      
+      nav ul li a {
+        font-size: 12px;
+      }
+      
+      .hero-content h1 {
+        font-size: 2.8rem;
+      }
+      
+      .hero-content p {
+        font-size: 1rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .product-3d-container {
+        height: 300px;
+      }
+      
+      .product-face {
+        width: 150px;
+        height: 225px;
+        margin-left: -75px;
+        margin-top: -112.5px;
+      }
+      
+      .product-face:nth-child(1) { transform: rotateY(0deg) translateZ(100px); }
+      .product-face:nth-child(2) { transform: rotateY(60deg) translateZ(100px); }
+      .product-face:nth-child(3) { transform: rotateY(120deg) translateZ(100px); }
+      .product-face:nth-child(4) { transform: rotateY(180deg) translateZ(100px); }
+      .product-face:nth-child(5) { transform: rotateY(240deg) translateZ(100px); }
+      .product-face:nth-child(6) { transform: rotateY(300deg) translateZ(100px); }
+    }
+    
+    @media (max-width: 576px) {
+      nav ul {
+        display: none;
+      }
+      
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+      
+      .hero-content p {
+        font-size: 0.9rem;
+      }
+      
+      .btn {
+        padding: 12px 30px;
+        font-size: 0.9rem;
+      }
+      
+      .product-3d-container {
+        height: 250px;
+      }
+      
+      .product-face {
+        width: 120px;
+        height: 180px;
+        margin-left: -60px;
+        margin-top: -90px;
+      }
+      
+      .product-face:nth-child(1) { transform: rotateY(0deg) translateZ(80px); }
+      .product-face:nth-child(2) { transform: rotateY(60deg) translateZ(80px); }
+      .product-face:nth-child(3) { transform: rotateY(120deg) translateZ(80px); }
+      .product-face:nth-child(4) { transform: rotateY(180deg) translateZ(80px); }
+      .product-face:nth-child(5) { transform: rotateY(240deg) translateZ(80px); }
+      .product-face:nth-child(6) { transform: rotateY(300deg) translateZ(80px); }
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div class="container">
+      <img src="image/logo.png" alt="Kremşanti Logo" class="logo">
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active">Ana Səhifə</a></li>
+          <li><a href="about.html">Haqqımızda</a></li>
+          <li><a href="products.html">Məhsullar</a></li>
+          <li><a href="contact.html">Əlaqə</a></li>
+        </ul>
+        <div class="lang-switch">
+          <a href="#">AZ</a> | <a href="#">RU</a> | <a href="#">EN</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
+  <section class="hero">
+    <div class="scene">
+      <div class="floating-cream cream-1">
+        <div class="cream-circle">
+          <img src="image/cream1.png" alt="Cream 1" class="product-image">
+        </div>
+      </div>
+      <div class="floating-cream cream-2">
+        <div class="cream-circle">
+          <img src="image/cream2.png" alt="Cream 2" class="product-image">
+        </div>
+      </div>
+      <div class="floating-cream cream-3">
+        <div class="cream-circle">
+          <img src="image/cream3.png" alt="Cream 3" class="product-image">
+        </div>
+      </div>
+    </div>
+    
+    <div class="hero-content">
+      <h1>Təzəlik, Dad və Keyfiyyət</h1>
+      <div class="hero-divider"></div>
+      <p>Azərbaycanın premium kremşanti markası ilə tanış olun.</p>
+      <a href="products.html" class="btn">Məhsullara Bax</a>
+    </div>
+  </section>
+  
+  <section class="featured-products">
+    <div class="container">
+      <h2 class="section-title">Premium Kremşanti Məhsullarımız</h2>
+      <p class="section-subtitle">
+        Ən yüksək keyfiyyətli və təbii inqrediyentlərdən hazırlanan kremşanti məhsullarımızla tanış olun.
+      </p>
+      
+      <div class="product-3d-container">
+        <div class="product-3d">
+          <div class="product-face">
+            <img src="image/product1.png" alt="Kremşanti Məhsul 1">
+          </div>
+          <div class="product-face">
+            <img src="image/product2.png" alt="Kremşanti Məhsul 2">
+          </div>
+          <div class="product-face">
+            <img src="image/product3.png" alt="Kremşanti Məhsul 3">
+          </div>
+          <div class="product-face">
+            <img src="image/product4.png" alt="Kremşanti Məhsul 4">
+          </div>
+          <div class="product-face">
+            <img src="image/product5.png" alt="Kremşanti Məhsul 5">
+          </div>
+          <div class="product-face">
+            <img src="image/product6.png" alt="Kremşanti Məhsul 6">
+          </div>
+        </div>
+      </div>
+      
+      <div class="product-cta">
+        <a href="products.html" class="btn">Bütün Məhsullara Bax</a>
+      </div>
+      
+      <div class="products-wrapper">
+        <div class="product-card">
+          <div class="product-image-container">
+            <img src="image/product-card1.png" alt="Klassik Kremşanti" class="product-img">
+            <div class="product-badge">Ən Çox Satılan</div>
+          </div>
+          <div class="product-details">
+            <h3 class="product-name">Klassik Kremşanti</h3>
+            <p class="product-description">Təbii inqrediyentlərdən hazırlanan klassik kremşanti - bütün tortlar və şirniyyatlar üçün ideal seçim.</p>
+            <a href="products.html" class="product-link">Ətraflı →</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image-container">
+            <img src="image/product-card2.png" alt="Çikolatalı Kremşanti" class="product-img">
+          </div>
+          <div class="product-details">
+            <h3 class="product-name">Çikolatalı Kremşanti</h3>
+            <p class="product-description">Əla keyfiyyətli kakao ilə zənginləşdirilmiş xüsusi çikolatalı kremşanti.</p>
+            <a href="products.html" class="product-link">Ətraflı →</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image-container">
+            <img src="image/product-card3.png" alt="Meyvəli Kremşanti" class="product-img">
+            <div class="product-badge">Yeni</div>
+          </div>
+          <div class="product-details">
+            <h3 class="product-name">Meyvəli Kremşanti</h3>
+            <p class="product-description">Təbii meyvə ekstraktları ilə hazırlanmış yeni dad - müxtəlif desert və tortlar üçün əla seçim.</p>
+            <a href="products.html" class="product-link">Ətraflı →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="why-choose-us">
+    <div class="container">
+      <h2 class="section-title">Niyə Bizi Seçməlisiniz</h2>
+      <p class="section-subtitle">
+        Kremşanti Fabriki olaraq, məhsullarımızın yüksək keyfiyyətinə və müştərilərimizin məmnuniyyətinə zəmanət veririk.
+      </p>
+      
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon">♥</div>
+          <h3>Təbii İnqrediyentlər</h3>
+          <p>Biz yalnız ən keyfiyyətli və təbii inqrediyentlərdən istifadə edirik. Məhsullarımızda süni qatqılar yoxdur.</p>
+        </div>
+        
+        <div class="feature">
+          <div class="feature-icon">★</div>
+          <h3>Yüksək Keyfiyyət</h3>
+          <p>Hər bir məhsulumuz ciddi keyfiyyət nəzarətindən keçir. Biz məhsullarımızın keyfiyyətinə zəmanət veririk.</p>
+        </div>
+        
+        <div class="feature">
+          <div class="feature-icon">✓</div>
+          <h3>Müasir Texnologiya</h3>
+          <p>İstehsalat prosesində ən müasir avadanlıq və texnologiyalardan istifadə edirik.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="cta">
+    <div class="container">
+      <h2>Bizim Məhsullarla Tanış Olun</h2>
+      <p>Kremşanti Fabrikinin geniş çeşidli məhsulları ilə tanış olun və dadın fərqini hiss edin.</p>
+      <a href="products.html" class="btn">Məhsullara Keçid</a>
+    </div>
+  </section>
+  
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="image/logo.png" alt="Kremşanti Logo">
+          <p>Premium keyfiyyətli kremşanti məhsulları istehsalçısı. 2010-cu ildən xidmətinizdəyik.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Instagram">i</a>
+            <a href="#" aria-label="Twitter">t</a>
+            <a href="#" aria-label="LinkedIn">l</a>
+          </div>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Əsas Bölmələr</h4>
+          <ul>
+            <li><a href="index.html">Ana Səhifə</a></li>
+            <li><a href="about.html">Haqqımızda</a></li>
+            <li><a href="products.html">Məhsullar</a></li>
+            <li><a href="contact.html">Əlaqə</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Məhsullar</h4>
+          <ul>
+            <li><a href="#">Kremşanti</a></li>
+            <li><a href="#">Tort Kremləri</a></li>
+            <li><a href="#">Çikolata</a></li>
+            <li><a href="#">Xüsusi Məhsullar</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Əlaqə</h4>
+          <ul>
+            <li><a href="#">Ünvan: Bakı, Azərbaycan</a></li>
+            <li><a href="#">Telefon: +994 50 123 45 67</a></li>
+            <li><a href="#">Email: info@kremshanti.az</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <p>&copy; 2025 Kremşanti Fabriki. Bütün hüquqlar qorunur.</p>
+      </div>
+    </div>
+    
+    <a href="#" class="back-to-top" aria-label="Yuxarı qalx">↑</a>
+  </footer>
+
+  <script>
+    // Scroll reveal animation
+    document.addEventListener('DOMContentLoaded', function() {
+      const header = document.getElementById('header');
+      const productCards = document.querySelectorAll('.product-card');
+      const features = document.querySelectorAll('.feature');
+      const cta = document.querySelector('.cta');
+      
+      // Header scroll effect
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 100) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
+      
+      // Reveal animations on scroll
+      function revealOnScroll() {
+        const windowHeight = window.innerHeight;
+        
+        productCards.forEach(function(card) {
+          const cardTop = card.getBoundingClientRect().top;
+          if (cardTop < windowHeight - 100) {
+            card.classList.add('revealed');
+          }
+        });
+        
+        features.forEach(function(feature) {
+          const featureTop = feature.getBoundingClientRect().top;
+          if (featureTop < windowHeight - 100) {
+            feature.classList.add('revealed');
+          }
+        });
+        
+        const ctaTop = cta.getBoundingClientRect().top;
+        if (ctaTop < windowHeight - 100) {
+          cta.classList.add('revealed');
+        }
+      }
+      
+      // Initial check
+      revealOnScroll();
+      
+      // Check on scroll
+      window.addEventListener('scroll', revealOnScroll);
+      
+      // Back to top functionality
+      const backToTop = document.querySelector('.back-to-top');
+      backToTop.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>

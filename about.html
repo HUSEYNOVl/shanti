@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Haqqımızda | Kremşanti Fabriki</title>
+  <style>
+    /* Typography */
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Montserrat:wght@300;400;500&display=swap');
+    
+    :root {
+      --primary-color: #b8860b;
+      --secondary-color: #f8f4e9;
+      --text-color: #333;
+      --light-gold: #d4af37;
+      --dark-gold: #8b6914;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--text-color);
+      background-color: var(--secondary-color);
+      line-height: 1.6;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header */
+    header {
+      background-color: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      top: 0;
+      padding: 15px 0;
+      transition: all 0.3s ease;
+    }
+    
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      height: 60px;
+      transition: all 0.3s ease;
+    }
+    
+    nav {
+      display: flex;
+      align-items: center;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    
+    nav ul li {
+      margin-left: 30px;
+    }
+    
+    nav ul li a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 14px;
+      position: relative;
+      padding: 5px 0;
+      transition: all 0.3s ease;
+    }
+    
+    nav ul li a:hover {
+      color: var(--primary-color);
+    }
+    
+    nav ul li a.active {
+      color: var(--primary-color);
+    }
+    
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--primary-color);
+      bottom: 0;
+      left: 0;
+      transition: width 0.3s ease;
+    }
+    
+    nav ul li a:hover::after, 
+    nav ul li a.active::after {
+      width: 100%;
+    }
+    
+    .lang-switch {
+      margin-left: 40px;
+      font-size: 14px;
+    }
+    
+    .lang-switch a {
+      text-decoration: none;
+      color: var(--text-color);
+      transition: color 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .lang-switch a:hover {
+      color: var(--primary-color);
+    }
+    
+    /* Hero section */
+    .hero {
+      height: 500px;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/api/placeholder/1200/500') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+      margin-top: 90px;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    
+    .hero-divider {
+      width: 150px;
+      height: 3px;
+      background-color: var(--primary-color);
+      margin: 0 auto 30px;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+    
+    /* About section */
+    .about-section {
+      padding: 80px 0;
+      text-align: center;
+    }
+    
+    .about-section h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--text-color);
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .about-section h1::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 3px;
+      background-color: var(--primary-color);
+      bottom: -10px;
+      left: 25%;
+    }
+    
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin-top: 50px;
+      gap: 40px;
+    }
+    
+    .about-image {
+      flex: 1;
+      min-width: 300px;
+      max-width: 500px;
+      border: 10px solid white;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transform: rotate(-3deg);
+      transition: all 0.3s ease;
+    }
+    
+    .about-image:hover {
+      transform: rotate(0deg) scale(1.02);
+    }
+    
+    .about-text {
+      flex: 1;
+      min-width: 300px;
+      text-align: left;
+      padding: 20px;
+    }
+    
+    .about-text p {
+      margin-bottom: 20px;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+    
+    .gold-accent {
+      color: var(--primary-color);
+      font-weight: 500;
+    }
+    
+    .about-values {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 60px;
+      gap: 30px;
+    }
+    
+    .value-item {
+      flex: 1;
+      min-width: 250px;
+      max-width: 300px;
+      padding: 30px;
+      background-color: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      border-radius: 5px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .value-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .value-icon {
+      font-size: 40px;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+    
+    .value-item h3 {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 60px 0 30px;
+      position: relative;
+    }
+    
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-logo {
+      flex: 1;
+      min-width: 250px;
+    }
+    
+    .footer-logo img {
+      height: 50px;
+      margin-bottom: 20px;
+    }
+    
+    .footer-logo p {
+      font-size: 14px;
+      max-width: 300px;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+    
+    .social-links a {
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+      background-color: rgba(255, 255, 255, 0.1);
+      text-align: center;
+      line-height: 36px;
+      border-radius: 50%;
+      margin-right: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      background-color: var(--primary-color);
+      transform: translateY(-3px);
+    }
+    
+    .footer-links {
+      flex: 1;
+      min-width: 160px;
+    }
+    
+    .footer-links h4 {
+      font-family: 'Playfair Display', serif;
+      color: white;
+      margin-bottom: 25px;
+      font-size: 18px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-links h4::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 2px;
+      background-color: var(--primary-color);
+    }
+    
+    .footer-links ul {
+      list-style: none;
+    }
+    
+    .footer-links ul li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-links ul li a {
+      color: #ddd;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 14px;
+      position: relative;
+      padding-left: 15px;
+    }
+    
+    .footer-links ul li a::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      top: 0;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-links ul li a:hover {
+      color: var(--primary-color);
+      padding-left: 20px;
+    }
+    
+    .footer-contact {
+      flex: 1;
+      min-width: 250px;
+    }
+    
+    .contact-info {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: flex-start;
+    }
+    
+    .contact-info-icon {
+      margin-right: 10px;
+      color: var(--primary-color);
+    }
+    
+    .contact-info-text {
+      font-size: 14px;
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 14px;
+    }
+    
+    .back-to-top {
+      position: absolute;
+      right: 30px;
+      bottom: 30px;
+      width: 40px;
+      height: 40px;
+      background-color: var(--primary-color);
+      color: white;
+      text-align: center;
+      line-height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .back-to-top:hover {
+      background-color: var(--dark-gold);
+      transform: translateY(-5px);
+    }
+    
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .fade-in {
+      animation: fadeIn 1s ease-out forwards;
+    }
+    
+    .delay-1 {
+      animation-delay: 0.2s;
+    }
+    
+    .delay-2 {
+      animation-delay: 0.4s;
+    }
+    
+    .delay-3 {
+      animation-delay: 0.6s;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul li {
+        margin-left: 15px;
+      }
+      
+      nav ul li a {
+        font-size: 12px;
+      }
+      
+      .hero {
+        height: 400px;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      nav ul {
+        display: none;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <img src="image/logo.png" alt="Kremşanti Logo" class="logo">
+      <nav>
+        <ul>
+          <li><a href="index.html">Ana Səhifə</a></li>
+          <li><a href="about.html" class="active">Haqqımızda</a></li>
+          <li><a href="products.html">Məhsullar</a></li>
+          <li><a href="contact.html">Əlaqə</a></li>
+        </ul>
+        <div class="lang-switch">
+          <a href="#">AZ</a> | <a href="#">RU</a> | <a href="#">EN</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="fade-in">Haqqımızda</h1>
+      <div class="hero-divider fade-in delay-1"></div>
+      <p class="fade-in delay-2">Keyfiyyət və zövqü təmsil edən premium kremşanti məhsulları</p>
+    </div>
+  </section>
+  
+  <section class="container about-section">
+    <h1 class="fade-in">Bizim Hekayəmiz</h1>
+    
+    <div class="about-content">
+      <div class="about-image fade-in delay-1">
+        <img src="/api/placeholder/500/350" alt="Kremşanti Fabrik" width="100%">
+      </div>
+      
+      <div class="about-text fade-in delay-2">
+        <p>
+          <span class="gold-accent">Kremşanti Fabriki</span> olaraq, 2010-cu ildən bu yana Azərbaycan bazarında yüksək keyfiyyətli və təbii inqrediyentlərdən hazırlanan kremşanti məhsulları istehsal edirik.
+        </p>
+        <p>
+          Məqsədimiz həm yerli, həm də xarici bazarlarda təbii, dadlı və sağlam məhsullarla lider olmaqdır. İstehsalatımızda ən müasir texnologiyalardan istifadə olunur və beynəlxalq standartlara cavab veririk.
+        </p>
+        <p>
+          Hər bir məhsulumuz diqqətlə seçilmiş inqrediyentlərdən hazırlanır və yüksək keyfiyyət standartlarına uyğun olaraq istehsal edilir. Biz öz işimizə olan həvəsimiz və istehlakçılarımıza təqdim etdiyimiz məhsulların keyfiyyəti ilə qürur duyuruq.
+        </p>
+      </div>
+    </div>
+    
+    <div class="about-values">
+      <div class="value-item fade-in delay-1">
+        <div class="value-icon">★</div>
+        <h3>Keyfiyyət</h3>
+        <p>Biz yalnız ən yaxşı inqrediyentlərdən istifadə edir və hər məhsulun mükəmməl olmasını təmin edirik.</p>
+      </div>
+      
+      <div class="value-item fade-in delay-2">
+        <div class="value-icon">♥</div>
+        <h3>Təbiilik</h3>
+        <p>Məhsullarımızı hazırlayarkən təbii inqrediyentlərə üstünlük verir və süni əlavələrdən qaçırıq.</p>
+      </div>
+      
+      <div class="value-item fade-in delay-3">
+        <div class="value-icon">✓</div>
+        <h3>İnnovasiya</h3>
+        <p>Daim yeni dadlar və reseptlər üzərində işləyir, bazara müasir məhsullar təqdim edirik.</p>
+      </div>
+    </div>
+  </section>
+  
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="image/logo.png" alt="Kremşanti Logo">
+          <p>Premium keyfiyyətli kremşanti məhsulları istehsalçısı. 2010-cu ildən xidmətinizdəyik.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Instagram">i</a>
+            <a href="#" aria-label="Twitter">t</a>
+            <a href="#" aria-label="LinkedIn">l</a>
+          </div>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Əsas Bölmələr</h4>
+          <ul>
+            <li><a href="index.html">Ana Səhifə</a></li>
+            <li><a href="about.html">Haqqımızda</a></li>
+            <li><a href="products.html">Məhsullar</a></li>
+            <li><a href="contact.html">Əlaqə</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Məhsullar</h4>
+          <ul>
+            <li><a href="#">Kremşanti</a></li>
+            <li><a href="#">Tort Kremləri</a></li>
+            <li><a href="#">Çikolata</a></li>
+            <li><a href="#">Xüsusi Məhsullar</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-contact">
+          <h4>Əlaqə</h4>
+          <div class="contact-info">
+            <div class="contact-info-icon">📍</div>
+            <div class="contact-info-text">Bakı şəhəri, Nərimanov rayonu, Əhməd Rəcəbli küçəsi 5</div>
+          </div>
+          <div class="contact-info">
+            <div class="contact-info-icon">📞</div>
+            <div class="contact-info-text">+994 12 555 55 55</div>
+          </div>
+          <div class="contact-info">
+            <div class="contact-info-icon">📧</div>
+            <div class="contact-info-text">info@kremsanti.az</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <p>&copy; 2025 Kremşanti Fabriki. Bütün hüquqlar qorunur.</p>
+      </div>
+    </div>
+    
+    <a href="#" class="back-to-top" aria-label="Yuxarı qalx">↑</a>
+  </footer>
+
+  <script>
+    // Simple scroll animation
+    document.addEventListener('DOMContentLoaded', function() {
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          if (this.getAttribute('href') === '#') {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+          } else {
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+      
+      // Header scroll effect
+      window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+          header.style.padding = '10px 0';
+          header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+        } else {
+          header.style.padding = '15px 0';
+          header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
